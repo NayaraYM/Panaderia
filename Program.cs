@@ -37,4 +37,4 @@ app.MapGet("/api/panaderia",() =>
 
 
 var port = Environment.GetEnvironmentVariable("Port")??"10000";
-app.Run($"http://0.0.0.0:{port}")
+app.Run($"http://0.0.0.0:{port}");
