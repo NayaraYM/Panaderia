@@ -6,11 +6,11 @@ builder.Services.AddCors(options =>
                 policity
                     .AllowAnyOrigin()
                     .AllowAnyHeader()
-                    .AllowAnyMethod()
+                    .AllowAnyMethod();
             }
-        )
+        );
     }
-)
+);
 var app = builder.Build();
 
 app.MapGet("/",() =>
@@ -36,5 +36,5 @@ app.MapGet("/api/panaderia",() =>
 });
 
 
-var port = Environment.GetEnvironmentVariable("Port")??"10000",
-app.Run($"http://0.0.0.0:{port}");
+var port = Environment.GetEnvironmentVariable("Port")??"10000";
+app.Run($"http://0.0.0.0:{port}")
