@@ -24,7 +24,7 @@ app.MapGet("/api/panaderia", () =>
 {
     var productos = new List<Producto>
     {
-        new {
+        new Producto {
             id = 1,
             codigo = "P001",
             nombre = "Pan de chocolate",
@@ -41,7 +41,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1555507036-ab1f4038808a",
             descripcion = "Pan suave con sabor a chocolate."
         },
-        new {
+        new Producto {
             id = 2,
             codigo = "P002",
             nombre = "Pan integral",
@@ -58,7 +58,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1509440159596-0249088772ff",
             descripcion = "Pan elaborado con harina integral."
         },
-        new {
+        new Producto {
             id = 3,
             codigo = "P003",
             nombre = "Pan francés",
@@ -75,7 +75,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1549931319-a545dcf3bc73",
             descripcion = "Pan tradicional de textura crujiente."
         },
-        new {
+        new Producto {
             id = 4,
             codigo = "P004",
             nombre = "Pan de yema",
@@ -92,7 +92,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1586444248902-2f64eddc13df",
             descripcion = "Pan dulce preparado con yema de huevo."
         },
-        new {
+        new Producto {
             id = 5,
             codigo = "P005",
             nombre = "Croissant de chocolate",
@@ -109,7 +109,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-4.1.0",
             descripcion = "Croissant crujiente relleno de chocolate."
         },
-        new {
+        new Producto {
             id = 6,
             codigo = "P006",
             nombre = "Croissant clásico",
@@ -126,7 +126,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80",
             descripcion = "Croissant tradicional con textura hojaldrada."
         },
-        new {
+        new Producto {
             id = 7,
             codigo = "P007",
             nombre = "Donut de chocolate",
@@ -143,7 +143,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1551024506-0bccd828d307",
             descripcion = "Dona cubierta con chocolate."
         },
-        new {
+        new Producto {
             id = 8,
             codigo = "P008",
             nombre = "Donut de fresa",
@@ -160,7 +160,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1533910534207-90f31029a78e",
             descripcion = "Dona cubierta con glaseado de fresa."
         },
-        new {
+        new Producto {
             id = 9,
             codigo = "P009",
             nombre = "Alfajor tradicional",
@@ -177,7 +177,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1558961363-fa8fdf82db35",
             descripcion = "Alfajor relleno de manjar blanco."
         },
-        new {
+        new Producto {
             id = 10,
             codigo = "P010",
             nombre = "Galleta con chispas",
@@ -194,7 +194,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1499636136210-6f4ee915583e",
             descripcion = "Galleta casera con chispas de chocolate."
         },
-        new {
+        new Producto {
             id = 11,
             codigo = "P011",
             nombre = "Muffin de vainilla",
@@ -211,7 +211,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1558303053-89ef17f0b225",
             descripcion = "Muffin suave con sabor a vainilla."
         },
-        new {
+        new Producto {
             id = 12,
             codigo = "P012",
             nombre = "Muffin de chocolate",
@@ -228,7 +228,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1607958996333-41aef7caefaa",
             descripcion = "Muffin de chocolate suave y esponjoso."
         },
-        new {
+        new Producto {
             id = 13,
             codigo = "P013",
             nombre = "Queque de vainilla",
@@ -245,7 +245,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1578985545062-69928b1d9587",
             descripcion = "Porción de queque casero de vainilla."
         },
-        new {
+        new Producto {
             id = 14,
             codigo = "P014",
             nombre = "Torta de chocolate",
@@ -262,7 +262,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62",
             descripcion = "Porción de torta de chocolate con crema."
         },
-        new {
+        new Producto {
             id = 15,
             codigo = "P015",
             nombre = "Torta de fresa",
@@ -279,7 +279,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3",
             descripcion = "Torta con crema y fresas frescas."
         },
-        new {
+        new Producto {
             id = 16,
             codigo = "P016",
             nombre = "Empanada de pollo",
@@ -296,7 +296,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1601050690597-df0568f70950",
             descripcion = "Empanada horneada rellena de pollo."
         },
-        new {
+        new Producto {
             id = 17,
             codigo = "P017",
             nombre = "Empanada de carne",
@@ -313,7 +313,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46",
             descripcion = "Empanada horneada rellena de carne."
         },
-        new {
+        new Producto {
             id = 18,
             codigo = "P018",
             nombre = "Pie de manzana",
@@ -330,7 +330,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1562007908-17c67e878c88",
             descripcion = "Pie casero relleno de manzana y canela."
         },
-        new {
+        new Producto {
             id = 19,
             codigo = "P019",
             nombre = "Pie de limón",
@@ -347,7 +347,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1519915028121-7d3463d20b13",
             descripcion = "Pie cremoso con sabor a limón."
         },
-        new {
+        new Producto {
             id = 20,
             codigo = "P020",
             nombre = "Cheesecake de fresa",
@@ -364,7 +364,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1565958011703-44f9829ba187",
             descripcion = "Cheesecake cremoso con cobertura de fresa."
         },
-        new {
+        new Producto {
             id = 21,
             codigo = "P021",
             nombre = "Pan de ajo",
@@ -381,7 +381,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c",
             descripcion = "Pan suave con mantequilla y ajo."
         },
-        new {
+        new Producto {
             id = 22,
             codigo = "P022",
             nombre = "Pan de queso",
@@ -398,7 +398,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?crop=faces",
             descripcion = "Pan pequeño relleno de queso."
         },
-        new {
+        new Producto {
             id = 23,
             codigo = "P023",
             nombre = "Pan de avena",
@@ -415,7 +415,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1509440159596-0249088772ff?crop=faces",
             descripcion = "Pan preparado con avena."
         },
-        new {
+        new Producto {
             id = 24,
             codigo = "P024",
             nombre = "Pan de quinua",
@@ -432,7 +432,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?crop=faces",
             descripcion = "Pan artesanal elaborado con quinua."
         },
-        new {
+        new Producto {
             id = 25,
             codigo = "P025",
             nombre = "Brioche",
@@ -449,7 +449,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1608198093002-ad4e005484ec",
             descripcion = "Pan dulce y suave estilo brioche."
         },
-        new {
+        new Producto {
             id = 26,
             codigo = "P026",
             nombre = "Roll de canela",
@@ -466,7 +466,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1509365465985-25d11c17e812",
             descripcion = "Roll dulce con canela y azúcar."
         },
-        new {
+        new Producto {
             id = 27,
             codigo = "P027",
             nombre = "Brownie clásico",
@@ -483,7 +483,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1564355808539-22fda35bed7e",
             descripcion = "Brownie de chocolate con textura suave."
         },
-        new {
+        new Producto {
             id = 28,
             codigo = "P028",
             nombre = "Brownie con nueces",
@@ -500,7 +500,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1519869325930-281384150729",
             descripcion = "Brownie de chocolate con nueces."
         },
-        new {
+        new Producto {
             id = 29,
             codigo = "P029",
             nombre = "Cupcake de vainilla",
@@ -517,7 +517,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1587668178277-295251f900ce",
             descripcion = "Cupcake de vainilla con crema."
         },
-        new {
+        new Producto {
             id = 30,
             codigo = "P030",
             nombre = "Cupcake de chocolate",
@@ -534,7 +534,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1607478900766-efe13248b125",
             descripcion = "Cupcake de chocolate con crema."
         },
-        new {
+        new Producto {
             id = 31,
             codigo = "P031",
             nombre = "Galleta de avena",
@@ -551,7 +551,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e",
             descripcion = "Galleta casera elaborada con avena."
         },
-        new {
+        new Producto {
             id = 32,
             codigo = "P032",
             nombre = "Galleta de coco",
@@ -568,7 +568,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80",
             descripcion = "Galleta dulce con sabor a coco."
         },
-        new {
+        new Producto {
             id = 33,
             codigo = "P033",
             nombre = "Pan de pasas",
@@ -585,7 +585,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7",
             descripcion = "Pan dulce con pasas."
         },
-        new {
+        new Producto {
             id = 34,
             codigo = "P034",
             nombre = "Pan de canela",
@@ -602,7 +602,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1534432182912-63863115e106",
             descripcion = "Pan dulce con aroma y sabor a canela."
         },
-        new {
+        new Producto {
             id = 35,
             codigo = "P035",
             nombre = "Rosquilla azucarada",
@@ -619,7 +619,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=700&q=90",
             descripcion = "Rosquilla cubierta con azúcar."
         },
-        new {
+        new Producto {
             id = 36,
             codigo = "P036",
             nombre = "Donut rellena de manjar",
@@ -636,7 +636,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1527904324834-3bda86da6771",
             descripcion = "Dona rellena de manjar blanco."
         },
-        new {
+        new Producto {
             id = 37,
             codigo = "P037",
             nombre = "Macaron de fresa",
@@ -653,7 +653,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1558326567-98ae2405596b",
             descripcion = "Macaron pequeño con relleno de fresa."
         },
-        new {
+        new Producto {
             id = 38,
             codigo = "P038",
             nombre = "Éclair de chocolate",
@@ -670,7 +670,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1559622214-f8a9850965bb",
             descripcion = "Éclair relleno de crema y cubierto de chocolate."
         },
-        new {
+        new Producto {
             id = 39,
             codigo = "P039",
             nombre = "Tiramisú",
@@ -687,7 +687,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9",
             descripcion = "Postre italiano con café y cacao."
         },
-        new {
+        new Producto {
             id = 40,
             codigo = "P040",
             nombre = "Flan casero",
@@ -704,7 +704,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixid=flan",
             descripcion = "Flan casero suave con caramelo."
         },
-        new {
+        new Producto {
             id = 41,
             codigo = "P041",
             nombre = "Sándwich de pollo",
@@ -721,7 +721,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1528735602780-2552fd46c7af",
             descripcion = "Sándwich de pollo con verduras frescas."
         },
-        new {
+        new Producto {
             id = 42,
             codigo = "P042",
             nombre = "Sándwich de jamón y queso",
@@ -738,7 +738,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1481070414801-51fd732d7184",
             descripcion = "Sándwich clásico de jamón y queso."
         },
-        new {
+        new Producto {
             id = 43,
             codigo = "P043",
             nombre = "Pizza personal",
@@ -755,7 +755,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1513104890138-7c749659a591",
             descripcion = "Pizza individual con jamón y queso."
         },
-        new {
+        new Producto {
             id = 44,
             codigo = "P044",
             nombre = "Tequeños de queso",
@@ -772,7 +772,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80",
             descripcion = "Tequeños rellenos de queso."
         },
-        new {
+        new Producto {
             id = 45,
             codigo = "P045",
             nombre = "Torta de cumpleaños",
@@ -789,7 +789,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1535141192574-5d4897c12636",
             descripcion = "Torta decorada ideal para cumpleaños."
         },
-        new {
+        new Producto {
             id = 46,
             codigo = "P046",
             nombre = "Torta de chocolate familiar",
@@ -806,7 +806,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=90",
             descripcion = "Torta familiar cubierta con chocolate."
         },
-        new {
+        new Producto {
             id = 47,
             codigo = "P047",
             nombre = "Caja de mini cupcakes",
@@ -823,7 +823,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1599785209707-a456fc1337bb",
             descripcion = "Caja con seis mini cupcakes."
         },
-        new {
+        new Producto {
             id = 48,
             codigo = "P048",
             nombre = "Caja de alfajores",
@@ -840,7 +840,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=700&q=80",
             descripcion = "Caja con seis alfajores rellenos de manjar."
         },
-        new {
+        new Producto {
             id = 49,
             codigo = "P049",
             nombre = "Caja de donuts",
@@ -857,7 +857,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=800&q=90",
             descripcion = "Caja con seis donuts de diferentes sabores."
         },
-        new {
+        new Producto {
             id = 50,
             codigo = "P050",
             nombre = "Panetón artesanal",
