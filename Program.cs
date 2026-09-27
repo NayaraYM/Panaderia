@@ -875,6 +875,7 @@ app.MapGet("/api/panaderia", () =>
             descripcion = "Panetón artesanal con frutas confitadas y pasas."
         }
     };
+    return Results.Ok(productos);
 });
 
 
