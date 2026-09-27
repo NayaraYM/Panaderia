@@ -1,3 +1,4 @@
+using Panaderia.Models;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
     {
@@ -21,7 +22,7 @@ app.MapGet("/",() =>
 
 app.MapGet("/api/panaderia", () =>
 {
-    return Results.Ok(new[]
+    var productos = new List<Producto>
     {
         new {
             id = 1,
@@ -873,7 +874,7 @@ app.MapGet("/api/panaderia", () =>
             imagen = "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=800&q=90",
             descripcion = "Panetón artesanal con frutas confitadas y pasas."
         }
-    });
+    };
 });
 
 
