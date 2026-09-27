@@ -12,17 +12,8 @@ builder.Services.AddCors(options =>
         );
     }
 );
-var app = builder.Build();
-app.UseCors();
 
-app.MapGet("/",() =>
-{
-    return "API Panaderia funcionando";
-});
-
-app.MapGet("/api/panaderia", () =>
-{
-    var productos = new List<Producto>
+ var productos = new List<Producto>
     {
         new Producto {
             id = 1,
@@ -873,10 +864,77 @@ app.MapGet("/api/panaderia", () =>
             descuento = 10,
             imagen = "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=800&q=90",
             descripcion = "Panetón artesanal con frutas confitadas y pasas."
-        }
-    };
+        } };
+
+var app = builder.Build();
+app.UseCors();
+
+app.MapGet("/",() =>
+{
+    return "API Panaderia funcionando";
+});
+
+app.MapGet("/api/panaderia", () =>
+{
     return Results.Ok(productos);
 });
+
+app.MapGet("/api/panaderia/{id}", (int id) =>
+{
+    var producto = productos.FirstOrDefault(p => p.id == id);
+
+    if (producto == null)
+    {
+        return Results.NotFound();
+    }
+
+    return Results.Ok(producto);
+});
+
+app.MapPut("/api/panaderia/{id}", (int id, Producto productoActualizado) =>
+{
+    var producto = productos.FirstOrDefault(p => p.id == id);
+
+    if (producto == null)
+    {
+        return Results.NotFound();
+    }
+
+
+    producto.codigo = productoActualizado.codigo;
+    producto.nombre = productoActualizado.nombre;
+    producto.categoria = productoActualizado.categoria;
+    producto.presentacion = productoActualizado.presentacion;
+    producto.tamano = productoActualizado.tamano;
+    producto.sabor = productoActualizado.sabor;
+    producto.precio = productoActualizado.precio;
+    producto.stock = productoActualizado.stock;
+    producto.marca = productoActualizado.marca;
+    producto.ingrediente = productoActualizado.ingrediente;
+    producto.disponibilidad = productoActualizado.disponibilidad;
+    producto.descuento = productoActualizado.descuento;
+    producto.imagen = productoActualizado.imagen;
+    producto.descripcion = productoActualizado.descripcion;
+
+
+    return Results.Ok(producto);
+});
+
+app.MapDelete("/api/panaderia/{id}", (int id) =>
+{
+    var producto = productos.FirstOrDefault(p => p.id == id);
+
+    if (producto == null)
+    {
+        return Results.NotFound();
+    }
+
+
+    productos.Remove(producto);
+
+    return Results.Ok("Producto eliminado");
+});
+
 
 
 var port = Environment.GetEnvironmentVariable("Port")??"10000";
