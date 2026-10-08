@@ -866,6 +866,210 @@ builder.Services.AddCors(options =>
             descripcion = "Panetón artesanal con frutas confitadas y pasas."
         } };
 
+var categorias = new List<Categoria>
+{
+    new Categoria
+    {
+        id = 1,
+        nombre = "Pan",
+        descripcion = "Panes tradicionales y artesanales.",
+        activa = true
+    },
+
+    new Categoria
+    {
+        id = 2,
+        nombre = "Pan dulce",
+        descripcion = "Panes dulces con diferentes sabores.",
+        activa = true
+    },
+
+    new Categoria
+    {
+        id = 3,
+        nombre = "Pastelería",
+        descripcion = "Productos de pastelería y repostería.",
+        activa = true
+    },
+
+    new Categoria
+    {
+        id = 4,
+        nombre = "Postres",
+        descripcion = "Postres preparados por la panadería.",
+        activa = true
+    },
+
+    new Categoria
+    {
+        id = 5,
+        nombre = "Tortas",
+        descripcion = "Tortas para cumpleaños y celebraciones.",
+        activa = true
+    },
+
+    new Categoria
+    {
+        id = 6,
+        nombre = "Galletas",
+        descripcion = "Galletas artesanales.",
+        activa = true
+    },
+
+    new Categoria
+    {
+        id = 7,
+        nombre = "Donas",
+        descripcion = "Donas de diferentes sabores.",
+        activa = true
+    },
+
+    new Categoria
+    {
+        id = 8,
+        nombre = "Cupcakes",
+        descripcion = "Cupcakes individuales y en cajas.",
+        activa = true
+    },
+
+    new Categoria
+    {
+        id = 9,
+        nombre = "Salados",
+        descripcion = "Productos salados y bocaditos.",
+        activa = true
+    },
+
+    new Categoria
+    {
+        id = 10,
+        nombre = "Sándwiches",
+        descripcion = "Sándwiches preparados al momento.",
+        activa = true
+    },
+
+    new Categoria
+    {
+        id = 11,
+        nombre = "Queques",
+        descripcion = "Queques caseros de diferentes sabores.",
+        activa = true
+    },
+
+    new Categoria
+    {
+        id = 12,
+        nombre = "Empanadas",
+        descripcion = "Empanadas con diferentes rellenos.",
+        activa = true
+    },
+
+    new Categoria
+    {
+        id = 13,
+        nombre = "Repostería",
+        descripcion = "Productos variados de repostería.",
+        activa = true
+    }
+    };
+
+var clientes = new List<Cliente>
+{
+    new Cliente
+    {
+        id = 1,
+        nombre = "María",
+        apellido = "García",
+        telefono = "987654321",
+        correo = "maria@gmail.com",
+        direccion = "Huancayo"
+    },
+
+    new Cliente
+    {
+        id = 2,
+        nombre = "Carlos",
+        apellido = "Flores",
+        telefono = "986123456",
+        correo = "carlos@gmail.com",
+        direccion = "El Tambo"
+    },
+
+    new Cliente
+    {
+        id = 3,
+        nombre = "Andrea",
+        apellido = "Quispe",
+        telefono = "985789456",
+        correo = "andrea@gmail.com",
+        direccion = "Huancayo"
+    }
+};
+
+var pedidos = new List<Pedido>
+{
+    new Pedido
+    {
+        id = 1,
+        clienteId = 1,
+        fecha = DateTime.Now,
+        total = 6.70,
+        estado = "Pendiente"
+    },
+
+    new Pedido
+    {
+        id = 2,
+        clienteId = 2,
+        fecha = DateTime.Now,
+        total = 25.00,
+        estado = "Entregado"
+    }
+};
+
+var detallesPedido = new List<DetallePedido>
+{
+    new DetallePedido
+    {
+        id = 1,
+        pedidoId = 1,
+        productoId = 3,
+        cantidad = 2,
+        precio = 0.60,
+        subtotal = 1.20
+    },
+
+    new DetallePedido
+    {
+        id = 2,
+        pedidoId = 1,
+        productoId = 5,
+        cantidad = 1,
+        precio = 5.50,
+        subtotal = 5.50
+    }
+
+    ,
+    new DetallePedido
+    {
+        id = 3,
+        pedidoId = 2,
+        productoId = 1,
+        cantidad = 2,
+        precio = 3.50,
+        subtotal = 7.00
+    },
+    new DetallePedido
+{
+        id = 4,
+        pedidoId = 2,
+        productoId = 2,
+        cantidad = 9,
+        precio = 2.00,
+        subtotal = 18.00
+}
+};
+
 var app = builder.Build();
 app.UseCors();
 
@@ -874,12 +1078,12 @@ app.MapGet("/",() =>
     return "API Panaderia funcionando";
 });
 
-app.MapGet("/api/panaderia", () =>
+app.MapGet("/api/productos", () =>
 {
     return Results.Ok(productos);
 });
 
-app.MapGet("/api/panaderia/{id}", (int id) =>
+app.MapGet("/api/productos/{id}", (int id) =>
 {
     var producto = productos.FirstOrDefault(p => p.id == id);
 
@@ -891,7 +1095,23 @@ app.MapGet("/api/panaderia/{id}", (int id) =>
     return Results.Ok(producto);
 });
 
-app.MapPut("/api/panaderia/{id}", (int id, Producto productoActualizado) =>
+app.MapPost("/api/productos", (Producto nuevoProducto) =>
+{
+    int nuevoId = productos.Count == 0
+        ? 1
+        : productos.Max(p => p.id) + 1;
+
+    nuevoProducto.id = nuevoId;
+
+    productos.Add(nuevoProducto);
+
+    return Results.Created(
+        $"/api/productos/{nuevoProducto.id}",
+        nuevoProducto
+    );
+});
+
+app.MapPut("/api/productos/{id}", (int id, Producto productoActualizado) =>
 {
     var producto = productos.FirstOrDefault(p => p.id == id);
 
@@ -920,7 +1140,7 @@ app.MapPut("/api/panaderia/{id}", (int id, Producto productoActualizado) =>
     return Results.Ok(producto);
 });
 
-app.MapDelete("/api/panaderia/{id}", (int id) =>
+app.MapDelete("/api/productos/{id}", (int id) =>
 {
     var producto = productos.FirstOrDefault(p => p.id == id);
 
@@ -935,7 +1155,88 @@ app.MapDelete("/api/panaderia/{id}", (int id) =>
     return Results.Ok("Producto eliminado");
 });
 
+//Endpoint Categorias
+app.MapGet("/api/categorias", () =>
+{
+    return Results.Ok(categorias);
+});
 
+app.MapGet("/api/categorias/{id}", (int id) =>
+{
+    var categoria = categorias.FirstOrDefault(c => c.id == id);
 
-var port = Environment.GetEnvironmentVariable("Port")??"10000";
+    if (categoria == null)
+    {
+        return Results.NotFound(new
+        {
+            mensaje = "Categoría no encontrada"
+        });
+    }
+
+    return Results.Ok(categoria);
+});
+
+//Endpoint Clientes
+app.MapGet("/api/clientes", () =>
+{
+    return Results.Ok(clientes);
+});
+
+app.MapGet("/api/clientes/{id}", (int id) =>
+{
+    var cliente = clientes.FirstOrDefault(c => c.id == id);
+
+    if (cliente == null)
+    {
+        return Results.NotFound(new
+        {
+            mensaje = "Cliente no encontrado"
+        });
+    }
+
+    return Results.Ok(cliente);
+});
+
+//Endpoint Pedidos
+app.MapGet("/api/pedidos", () =>
+{
+    return Results.Ok(pedidos);
+});
+
+app.MapGet("/api/pedidos/{id}", (int id) =>
+{
+    var pedido = pedidos.FirstOrDefault(p => p.id == id);
+
+    if (pedido == null)
+    {
+        return Results.NotFound(new
+        {
+            mensaje = "Pedido no encontrado"
+        });
+    }
+
+    return Results.Ok(pedido);
+});
+
+//Endpoint Detalle Pedido
+app.MapGet("/api/pedidos/{id}/detalle", (int id) =>
+{
+    var pedido = pedidos.FirstOrDefault(p => p.id == id);
+
+    if (pedido == null)
+    {
+        return Results.NotFound(new
+        {
+            mensaje = "Pedido no encontrado"
+        });
+    }
+
+    var detalles = detallesPedido
+        .Where(d => d.pedidoId == id)
+        .ToList();
+
+    return Results.Ok(detalles);
+});
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
 app.Run($"http://0.0.0.0:{port}");

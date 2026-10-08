@@ -1,6 +1,29 @@
-@Panaderia_HostAddress = http://localhost:5143
 
-GET {{Panaderia_HostAddress}}/weatherforecast/
+@Panaderia_HostAddress = http://localhost:10000
+
+### Comprobar API
+GET {{Panaderia_HostAddress}}/
+
+### Obtener productos
+GET {{Panaderia_HostAddress}}/api/productos
 Accept: application/json
 
-###
+### Obtener producto por ID
+GET {{Panaderia_HostAddress}}/api/productos/1
+Accept: application/json
+
+### Obtener categorias
+GET {{Panaderia_HostAddress}}/api/categorias
+Accept: application/json
+
+### Obtener clientes
+GET {{Panaderia_HostAddress}}/api/clientes
+Accept: application/json
+
+### Obtener pedidos
+GET {{Panaderia_HostAddress}}/api/pedidos
+Accept: application/json
+
+### Obtener detalle del pedido 2
+GET {{Panaderia_HostAddress}}/api/pedidos/2/detalle
+Accept: application/json
