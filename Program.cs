@@ -369,7 +369,7 @@ builder.Services.AddCors(options =>
             ingrediente = "Harina, ajo, mantequilla, sal",
             disponibilidad = "Disponible",
             descuento = 0,
-            imagen = "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c",
+            imagen = "https://i.blogs.es/124ffe/pan_ajo/450_1000.jpg",
             descripcion = "Pan suave con mantequilla y ajo."
         },
         new Producto {
