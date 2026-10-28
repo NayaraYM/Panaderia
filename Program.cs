@@ -1176,6 +1176,46 @@ app.MapGet("/api/categorias/{id}", (int id) =>
     return Results.Ok(categoria);
 });
 
+// ==========================================
+// ENDPOINTS REST FALTANTES PARA CATEGORÍAS
+// ==========================================
+
+app.MapPost("/api/categorias", (Categoria nuevaCategoria) =>
+{
+    int nuevoId = categorias.Count == 0 ? 1 : categorias.Max(c => c.id) + 1;
+    nuevaCategoria.id = nuevoId;
+    categorias.Add(nuevaCategoria);
+    
+    return Results.Created($"/api/categorias/{nuevaCategoria.id}", nuevaCategoria);
+});
+
+app.MapPut("/api/categorias/{id}", (int id, Categoria categoriaActualizada) =>
+{
+    var categoria = categorias.FirstOrDefault(c => c.id == id);
+    if (categoria == null)
+    {
+        return Results.NotFound(new { mensaje = "Categoría no encontrada" });
+    }
+
+    categoria.nombre = categoriaActualizada.nombre;
+    categoria.descripcion = categoriaActualizada.descripcion;
+    categoria.activa = categoriaActualizada.activa;
+
+    return Results.Ok(categoria);
+});
+
+app.MapDelete("/api/categorias/{id}", (int id) =>
+{
+    var categoria = categorias.FirstOrDefault(c => c.id == id);
+    if (categoria == null)
+    {
+        return Results.NotFound(new { mensaje = "Categoría no encontrada" });
+    }
+
+    categorias.Remove(categoria);
+    return Results.Ok(new { mensaje = "Categoría eliminada" });
+});
+
 //Endpoint Clientes
 app.MapGet("/api/clientes", () =>
 {
@@ -1197,6 +1237,48 @@ app.MapGet("/api/clientes/{id}", (int id) =>
     return Results.Ok(cliente);
 });
 
+// ==========================================
+// ENDPOINTS REST PARA CLIENTES
+// ==========================================
+
+app.MapPost("/api/clientes", (Cliente nuevoCliente) =>
+{
+    int nuevoId = clientes.Count == 0 ? 1 : clientes.Max(c => c.id) + 1;
+    nuevoCliente.id = nuevoId;
+    clientes.Add(nuevoCliente);
+    
+    return Results.Created($"/api/clientes/{nuevoCliente.id}", nuevoCliente);
+});
+
+app.MapPut("/api/clientes/{id}", (int id, Cliente clienteActualizado) =>
+{
+    var cliente = clientes.FirstOrDefault(c => c.id == id);
+    if (cliente == null)
+    {
+        return Results.NotFound(new { mensaje = "Cliente no encontrado" });
+    }
+
+    cliente.nombre = clienteActualizado.nombre;
+    cliente.apellido = clienteActualizado.apellido;
+    cliente.telefono = clienteActualizado.telefono;
+    cliente.correo = clienteActualizado.correo;
+    cliente.direccion = clienteActualizado.direccion;
+
+    return Results.Ok(cliente);
+});
+
+app.MapDelete("/api/clientes/{id}", (int id) =>
+{
+    var cliente = clientes.FirstOrDefault(c => c.id == id);
+    if (cliente == null)
+    {
+        return Results.NotFound(new { mensaje = "Cliente no encontrado" });
+    }
+
+    clientes.Remove(cliente);
+    return Results.Ok(new { mensaje = "Cliente eliminado" });
+});
+
 //Endpoint Pedidos
 app.MapGet("/api/pedidos", () =>
 {
@@ -1214,6 +1296,42 @@ app.MapGet("/api/pedidos/{id}", (int id) =>
             mensaje = "Pedido no encontrado"
         });
     }
+
+    return Results.Ok(pedido);
+});
+
+// ==========================================
+// ENDPOINTS REST PARA PEDIDOS
+// ==========================================
+
+app.MapPost("/api/pedidos", (Pedido nuevoPedido) =>
+{
+    int nuevoId = pedidos.Count == 0 ? 1 : pedidos.Max(p => p.id) + 1;
+    nuevoPedido.id = nuevoId;
+    
+    // Si la petición no envía fecha, se asigna la fecha y hora actual
+    if (nuevoPedido.fecha == default) 
+    {
+        nuevoPedido.fecha = DateTime.Now;
+    }
+
+    pedidos.Add(nuevoPedido);
+    
+    return Results.Created($"/api/pedidos/{nuevoPedido.id}", nuevoPedido);
+});
+
+app.MapPut("/api/pedidos/{id}", (int id, Pedido pedidoActualizado) =>
+{
+    var pedido = pedidos.FirstOrDefault(p => p.id == id);
+    if (pedido == null)
+    {
+        return Results.NotFound(new { mensaje = "Pedido no encontrado" });
+    }
+
+    pedido.clienteId = pedidoActualizado.clienteId;
+    pedido.fecha = pedidoActualizado.fecha;
+    pedido.total = pedidoActualizado.total;
+    pedido.estado = pedidoActualizado.estado;
 
     return Results.Ok(pedido);
 });
