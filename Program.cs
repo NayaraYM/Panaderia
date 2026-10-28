@@ -1336,6 +1336,21 @@ app.MapPut("/api/pedidos/{id}", (int id, Pedido pedidoActualizado) =>
     return Results.Ok(pedido);
 });
 
+app.MapDelete("/api/pedidos/{id}", (int id) =>
+{
+    var pedido = pedidos.FirstOrDefault(p => p.id == id);
+    if (pedido == null)
+    {
+        return Results.NotFound(new { mensaje = "Pedido no encontrado" });
+    }
+
+    // Se eliminan también los detalles asociados en cascada para evitar datos huérfanos
+    detallesPedido.RemoveAll(d => d.pedidoId == id);
+    
+    pedidos.Remove(pedido);
+    return Results.Ok(new { mensaje = "Pedido y sus detalles eliminados" });
+});
+
 //Endpoint Detalle Pedido
 app.MapGet("/api/pedidos/{id}/detalle", (int id) =>
 {
